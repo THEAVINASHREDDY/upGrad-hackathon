@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Chatbot</title>
+
+    <style>
+        body {
+          background-image: url('static/images/hero-bg.jpg');
+        }
+        </style>
+    
+</head>
+
+
+<body>
+   <div id="name"> 
+
+    <h1 class="fancy">  Welcome to HealthBot..!</h1>  
+    <style>h1{
+        color: rgb(7, 74, 110);
+        font-size: 4rem;
+        font-family: sans-serif;
+        text-align: center;
+        line-height: 20vh;
+    }
+    
+    span{
+        opacity: 0;
+        transition: all 0.4s ease;
+        transform: translateY(50px);
+        display: inline-block;
+    }
+    
+    span.fade{
+        opacity:1;
+        transform: translateY(0px);
+    }</style>
+
+    <script>
+        
+const text = document.querySelector(".fancy");
+const strText = text.textContent;
+const splitText = strText.split("");
+text.textContent = "";
+
+for(let i=0;i<splitText.length;i++){
+  text.innerHTML += "<span>" + splitText[i] + "</span>";
+
+
+}
+
+let char = 0;
+let timer = setInterval(onTick,50);
+function onTick(){
+  const span = text.querySelectorAll('span')[char];
+  span.classList.add('fade');
+  char++
+
+  if(char === splitText.length){
+   complete();
+   return;
+  }
+}
+function complete(){
+  clearInterval(timer);
+  timer = null;
+
+}
+    </script>
+
+</div>
+
+    
+<div class="container">
+    <div class="chatbox">
+        <div class="chatbox__support">
+            <div class="chatbox__header">
+                <div class="chatbox__image--header">
+                    <img src="https://img.icons8.com/color/48/000000/circled-user-female-skin-type-5--v1.png" alt="image">
+                </div>
+                <div class="chatbox__content--header">
+                    <h4 class="chatbox__heading--header">Chat support</h4>
+                    <p class="chatbox__description--header">Welcome - How can I help you today?</p>
+                </div>
+            </div>
+            <div class="chatbox__messages">
+                <div></div>
+            </div>
+            <div class="chatbox__footer">
+                <input type="text" placeholder="Write a message...">
+                <button class="chatbox__send--footer send__button">Send</button>
+            </div>
+        </div>
+        <div class="chatbox__button">
+            <button><img src="{{ url_for('static', filename='images/msgpic.png') }}" /></button>
+        </div>
+    </div>
+</div>
+
+    
+    <script type="text/javascript" src="{{ url_for('static', filename='app.js') }}"></script>
+
+</body>
+</html>
