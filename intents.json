@@ -21,6 +21,11 @@
              "responses":["you can call me Night!","i am night!","i am Night your medical assistant"]
             },
             {
+             "tag":"previous disease",
+             "patterns": ["i had asthma","i have diabetes"],
+             "responses": ["gop consult doctor as there might be side effects of my suggestion"]
+            },
+            {
              "tag":"common cold symptoms",
              "patterns": ["Runny or stuffy nose",
              "Sore throat",
